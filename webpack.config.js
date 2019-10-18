@@ -1,25 +1,18 @@
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const path = require("path");
-const { VueLoaderPlugin } = require('vue-loader');
-module.exports={
+module.exports = {
     mode: 'development',
     entry:path.join(__dirname,'./src/main.js'),
     output:{
-       path:path.join(__dirname,'./dist'),
+        path:path.join(__dirname,'./dist'),
         filename:'bundle.js'
     },
     devServer:{
         open:true,
-        port:8080,
+        port:8081,
         contentBase:'src',
         hot:true
     },
-    plugins:[//配置插件的节点
-  /*    new  webpack.HotModuleReplacementPlugin()*/
-/*     new VueLoaderPlugin();*/
-     new VueLoaderPlugin()
-
-    ],
     module:{
         rules: [ // 所有第三方模块的 匹配规则
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }, // 处理 CSS 文件的 loader
@@ -30,10 +23,8 @@ module.exports={
             { test: /\.vue$/, use: 'vue-loader' }, // 处理 .vue 文件的 loader
         ]
     },
-    resolve:{
-         alias:{
-     "vue$":"vue/dist/vue.js"
-         }
-    }
-
+    plugins: [
+        // 请确保引入这个插件来施展魔法
+        new VueLoaderPlugin()
+    ]
 }

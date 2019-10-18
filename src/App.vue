@@ -1,8 +1,17 @@
 <template>
     <div class="app-container">
-        <mt-header fixed title="固定在顶部"> </mt-header>
 
-        <router-view></router-view>
+        <mt-header fixed title="Vue项目">
+       <span slot="left" >
+
+        <mt-button icon="back">        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>返回</mt-button>
+      </span>
+        </mt-header>
+
+        <transition>
+            <router-view></router-view>
+
+        </transition>
 
 
         <nav class="mui-bar mui-bar-tab">
@@ -37,5 +46,21 @@
 <style lang="scss" scoped>
 .app-container{
      padding-top: 40px;
+      padding-bottom: 50px;
+    overflow-x: hidden;
  }
+    .v-enter{
+        opacity: 0;
+        transform: translateX(100%);
+
+    }
+    .v-leave-to{
+        opacity: 0;
+        transform: translateX(0%);
+        position: absolute;
+    }
+    .v-enter-active,
+    .v-leave-active{
+        transition: all 0.5s ease;
+    }
 </style>
