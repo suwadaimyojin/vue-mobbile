@@ -60,8 +60,8 @@
         },
         methods:{
             getNewlist(){
-                this.$http.get('api/getnewslist').then(result => {
-                        this.NewList = result.body.message;
+                this.axios.get('http://www.liulongbin.top:3005/api/getnewslist').then(result => {
+                        this.NewList = result.data.message;
                         console.log(this.NewList);
                     }
                 )

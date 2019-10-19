@@ -18,7 +18,7 @@
 export default {
     data(){
         return{
-id:this.$route.params.id,
+         id:this.$route.params.id,
             newsinfo:[]
         }
     },
@@ -27,8 +27,8 @@ id:this.$route.params.id,
     },
     methods:{
         getnewsinfo(){
-            this.$http.get('api/getnew/'+this.id).then(result=>{
-                this.newsinfo = result.body.message[0];
+            this.axios.get('http://www.liulongbin.top:3005/api/getnew/'+this.id).then(result=>{
+                this.newsinfo = result.data.message[0];
                 console.log(this.newsinfo);
                 console.log("执行到这里了!")
             })

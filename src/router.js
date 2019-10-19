@@ -6,6 +6,9 @@ import ShopcarContainer from './components/tabbar/ShopcarContainer.vue'
 import SearchContainer from './components/tabbar/SearchContainer.vue'
 import NewsList from './components/news/NewsList.vue'
 import Newsinfo from './components/news/Newsinfo.vue'
+import PhotoList from './components/photos/PhotoList.vue'
+import Photoinfo from './components/photos/Photoinfo.vue'
+
 var router =new VueRouter({
     routes:[
       { path:'/home',
@@ -28,6 +31,14 @@ var router =new VueRouter({
         }, {
             path:'/home/newsinfo/:id',
             component:Newsinfo
+        },
+        {
+            path:'/home/PhotoList',
+            component:PhotoList
+        },
+        {
+            path:'/home/Photoinfo/:id',
+            component:Photoinfo
         }
     ]
 })

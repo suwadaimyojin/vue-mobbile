@@ -3,7 +3,7 @@
   <div>
 
       <mt-swipe :auto="4000">
-          <mt-swipe-item v-for="item in lunbotuList":key="item.url">
+          <mt-swipe-item v-for="item in lunbotuList":key="item.id">
               <img :src="item.img" alt="">
           </mt-swipe-item>
       </mt-swipe>
@@ -49,8 +49,10 @@ this.getLunbotu();
     },
     methods:{
         getLunbotu(){
-            this.$http.get('api/getlunbo').then(result => {
-                    this.lunbotuList = result.body.message;
+            this.axios.get('http://www.liulongbin.top:3005/api/getlunbo').then(result => {
+                    this.lunbotuList = result.data.message;
+
+                    console.log(this.lunbotuList);
                 }
                )
         }
