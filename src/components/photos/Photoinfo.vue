@@ -6,6 +6,7 @@
            <span>点击：0次{{photoinfo.click}}</span>
        </p>
        <hr>
+       <img class="preview-img" v-for="(item, index) in list" :src="item.src" height="100" @click="$preview.open(index, list)" :key="item.src">
 
        <div class="content" v-html="photoinfo.content">
 
@@ -21,11 +22,14 @@ export default {
     data(){
        return {
            id:this.$route.params.id,
-           photoinfo:[]
+           photoinfo:[],
+           list:[]
        };
     },
     created(){
         this.getPhotoinfo();
+
+        this.getThumbs();
 
     },
     methods:{
@@ -38,7 +42,19 @@ export default {
                    this.photoinfo = result.data.message[0]
                   }
               })
-          }
+          },
+        getThumbs(){
+              this.axios.get('http://www.liulongbin.top:3005/api/getthumimages/'+this.id).then(result=>{
+                    if(result.data.status===0){
+                        result.data.message.forEach(item=>{
+                            item.w=600;
+                            item.h=400;
+                        })
+                    };
+                  this.list = result.data.message;
+              });
+
+        }
     },
     components:{
         'cmt-box':comment
@@ -67,10 +83,13 @@ export default {
             line-height: 30px;
         }
 
+        .preview-img{
+            margin: 10px;
+            box-shadow: 0 0 8px #999;
+        }
         .thumbs{
             img{
-                margin: 10px;
-                box-shadow: 0 0 8px #999;
+
             }
         }
     }

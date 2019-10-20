@@ -8,12 +8,14 @@ import moment from 'moment'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import MintUI from 'mint-ui'
-
+import VuePreview from 'vue-preview'
 /*import  {Header,Button,Lazyload,Tabbar, TabItem,Swipe, SwipeItem} from 'mint-ui'*/
 import 'J:/webpack_demo/src/lib/mui/css/mui.min.css'
 import 'J:/webpack_demo/src/lib/mui/css/icons-extra(1).css'
 import 'J:/webpack_demo/node_modules/mint-ui/lib/header/style.css'
 import 'J:/webpack_demo/node_modules/mint-ui/lib/tabbar/style.css'
+
+Vue.use(VuePreview)
 
 
 Vue.use(MintUI);
